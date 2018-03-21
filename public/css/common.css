@@ -1,0 +1,350 @@
+@charset "utf-8";
+/*==================================================
+   CSS initialization & CSS Reset
+==================================================*/
+html, body {
+    -webkit-text-size-adjust:none;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, textarea, p, blockquote, th, td, input, select, textarea, button, a {
+    margin:0;
+    padding:0;
+}
+fieldset, img {
+    border:0 none;
+}
+dl, ul, ol, menu, li {
+    list-style:none;
+}
+ul:after {
+    content:"";
+    clear:both;
+}
+blockquote, q {
+    quotes:none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content:'';
+}
+input, select, textarea, button {
+    vertical-align:middle;
+}
+input, textarea {
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+}
+button {
+    border:0 none;
+    background-color:transparent;
+    cursor:pointer;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+/* 뷰표트 변환시 폰트크기 자동확대 방지 */
+address, caption, cite, code, dfn, em, var {
+    font-style:normal;
+    font-weight:normal;
+}
+caption {
+    overflow:hidden;
+    position:absolute;
+    width:0;
+    height:0;
+    line-height:0;
+    text-indent:-9999px;
+}
+/*------------------ 기본 색상 및 anchor 설정 ------------------*/
+body, p, h1, h2, h3, h4, h5, h6, th, td, input, select, textarea, button {
+    /*
+    color:#1a1a1a;
+    font-size:14px;
+    */
+    font-weight:normal;
+    font-family:'AppleSDGothicNeo', 'apple sd gothic neo', '애플고딕', 'Apple Gothic', 'Roboto', 'Noto', 'Droid sans', '맑은 고딕', 'Malgun Gothic', '돋움', 'Dotum', sans-serif;
+    word-wrap:break-word;
+}
+/*=== Class Style =========================================*/
+.none {
+    display:none;
+}
+.hide {
+    overflow:hidden;
+    position:absolute;
+    top:0;
+    left:0;
+    font-size:1%;
+    line-height:1%;
+}
+/*이미지동일비율정리,원하는사이즈 width/height 적어줄것*/
+img.fit {
+    object-fit:cover;
+}
+img.flex {
+    width:100%;
+    height:auto;
+    vertical-align:top;
+}
+.clfix:after {
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+    font-size:0;
+}
+.clfix {
+    *display:inline-block;
+    zoom:1;
+}
+/*설명글*/
+.desc {
+    background:#e1e1e1;
+    color:#111;
+    border:1px dashed #111;
+    padding:20px;
+}
+/*...말줌임표*/
+.ellips {
+    display:block;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+}
+/*=== Position ===============================================*/
+.box {
+    box-sizing:border-box;
+}
+.rel {
+    position:relative;
+}
+.abs {
+    position:absolute;
+}
+/*=== Layout ===============================================*/
+/*다단나누기*/
+.col:after {
+    display:block;
+    clear:both;
+    content:'';
+}
+.col > * {
+    float:left;
+}
+.col-1 {
+    width:100%;
+}
+/*1단*/
+.col.col-2 > * {
+    width:50%;
+}
+/*2단*/
+.col.col-3 > * {
+    width:33.333%;
+}
+/*3단*/
+.col.col-4 > * {
+    width:25%;
+}
+/*4단*/
+.col.col-5 > * {
+    width:20%;
+}
+/*5단*/
+.col.col-31 > .col-lg {
+    width:66.66%;
+}
+/*3:1분할*/
+.col.col-31 > .col-sm {
+    width:33.33%;
+}
+/*위치제어*/
+.left {
+    text-align:left;
+}
+.center {
+    text-align:center;
+}
+.right {
+    text-align:right;
+}
+.auto {
+    margin-left:auto;
+    margin-right:auto;
+}
+.float-left {
+    float:left !important;
+}
+.float-right {
+    float:right !important;
+}
+.middle {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+.t50 {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+}
+/*template*/
+.card {
+    border-radius:2px;
+    color:rgba(0, 0, 0, 0.87);
+    box-sizing:border-box;
+    background:rgb(250, 250, 250);
+    box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.tmpl {
+    width:90%;
+    height:100%;
+    margin:5% auto;
+    padding:30px;
+    background:#FFF;
+    border-radius:5px;
+    box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+/*패널형템플릿*/
+.panel {
+    border-radius:2px;
+    background:rgb(250, 250, 250);
+    box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.parallax-bg {
+    position:relative;
+    min-height:300px;
+    z-index:-1;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    background-attachment:fixed !important;
+    background-position:50% 0 !important;
+    background-repeat:no-repeat !important;
+    background-size:cover !important;
+}
+/*=== Symbol =================================================*/
+
+/*=== Color =================================================*/
+
+/*=== Background =================================================*/
+.bg-blue {
+    border-color:#245580;
+    background:linear-gradient(to bottom, #337ab7 0, #2b669a 100%) #337ab7;
+    text-shadow:0 -1px 0 rgba(0, 0, 0, .2);
+    box-shadow:inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+}
+.bg-green {
+    background:linear-gradient(to bottom, #5cb85c 0, #419641 100%) #419641;
+    text-shadow:0 -1px 0 rgba(0, 0, 0, .2);
+}
+/*=== Anchor ===============================================*/
+a {
+    color:inherit;
+    text-decoration:none;
+}
+a:active, a:hover {
+    text-decoration:none;
+}
+/*=== Button ===============================================*/
+.btn-blue {
+    padding:5px 10px;
+    color:#fff;
+    line-height:1.3333333;
+    text-shadow:0 -1px 0 rgba(0, 0, 0, .2);
+    border-radius:6px;
+    border-color:#245580;
+    background-color:#337ab7;
+    background-repeat:repeat-x;
+    background-image:linear-gradient(to bottom, #337ab7 0, #265a88 100%);
+    box-shadow:inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+}
+.btn-green {
+    padding:10px 16px;
+    color:#fff;
+    font-size:18px;
+    line-height:1.3333333;
+    text-shadow:0 -1px 0 rgba(0, 0, 0, .2);
+    border-radius:6px;
+    border-color:#398439;
+    background-color:#337ab7;
+    background-repeat:repeat-x;
+    background-image:linear-gradient(to bottom, #5cb85c 0, #419641 100%);
+    box-shadow:inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+}
+/*=== Heading ==============================================*/
+h1 {
+    width:100%;
+    padding:10px 0 10px;
+    border-bottom:1px solid #eee;
+    font-size:36px;
+    font-weight:normal;
+}
+/*=== Flex-box =================================================*/
+.flex-box {
+    display:-webkit-flex;
+    display:flex;
+}
+.flex-center {
+    display:-webkit-flex;
+    display:flex;
+    -webkit-align-items:center;
+    align-items:center;
+    -webkit-justify-content:center;
+    justify-content:center;
+}
+.flex-initial {
+    -webkit-flex:initial;
+    flex:initial;
+}
+.flex-none {
+    -webkit-flex:none;
+    flex:none;
+}
+/*=== Grid =================================================*/
+.grid-center {
+    display:grid;
+    justify-content:center;
+    align-items:center;
+}
+/*=== Form =================================================*/
+
+/*=== Table =================================================*/
+
+/*=== Animation =================================================*/
+.trans {
+    -webkit-transition:all 0.3s;
+    transition:all 0.3s;
+}
+/*=== Paragraph ============================================*/
+
+/*=== Line ============================================*/
+
+/*=== Loading ============================================*/
+.loading-donut {
+    display:inline-block;
+    border:2px solid rgba(0, 0, 0, 0.1);
+    border-left-color:#7983ff;
+    border-radius:50%;
+    width:30px;
+    height:30px;
+    animation:donut-spin 0.6s linear infinite;
+}
+@keyframes donut-spin {
+    0% {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}
+/*==================================================
+	Media Query style
+==================================================*/
+/*
+@media only screen and (max-width: 480px) { }
+@media only screen and (min-width: 481px) and (max-width: 1024px) { }
+@media only screen and (min-width: 1025px) { }
+*/
+@media only screen and (max-width:1270px) {
+
+}
