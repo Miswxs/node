@@ -18,6 +18,7 @@
   "homepage": "https://github.com/yeshtml5/node#readme",
   "dependencies": {
     "colors": "^1.2.1",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "jade": "^1.11.0"
   }
 }
