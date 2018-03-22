@@ -3,6 +3,7 @@
  */
 /*============================================*/
 const common = require('./lib/common.js')
+const path = require('path')
 const express = require("express")
 const app = express()
 const router = express.Router()
@@ -13,24 +14,38 @@ const PORT = process.env.PORT || 3000
 * config
 ============================================*/
 app.locals.pretty = true;
-app.set('views', './views')
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade')
 app.use(express.static('public'))
 /*============================================
-*
 * router
-*
 ============================================*/
 let indexFile = __dirname + '/public/index.html'
 app.get('/template', (req, res) => {
-
-    res.render('temp',{time:Date(),title:'This is my title!!'})
+    res.render('temp', {time: Date(), title: 'This is my title!!'})
 })
 app.get('/', (req, res) => {
     res.send('test ')
 })
 app.get('/login', (req, res) => {
     res.send('login')
+})
+app.get('/topic/:id/:mode', (req, res) => {
+    let topics = [
+        'Node',
+        'PHP',
+        'HTML'
+    ]
+    let _html = `
+        <a href="/topic/0/">Node</a><br>
+        <a href="/topic/1/">PHP</a><br>
+        <a href="/topic/2/">HTML</a><br>
+        
+        ${topics[req.params.id]}
+    `
+   // res.send(_html)
+
+    res.send("##"+req.params.id+" _ "+req.params.mode)
 })
 app.get('/dynamic', (req, res) => {
     var lis = '';
@@ -73,3 +88,4 @@ app.listen(PORT, () => {
     console.log('start SERVER')
     console.log(__dirname);
 })
+module.exports = app
