@@ -1,9 +1,10 @@
+const express = require('express')
+const route = express.Router()
+
 exports.getName = function (req, res) {
     res.send('<h2>EXPORT</h2>')
-}
 
-var express = require('express')
-var route = express.Router()
+}
 route.get('/:id/:mode', (req, res) => {
     let topics = [
         'Node',
