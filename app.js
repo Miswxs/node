@@ -2,14 +2,13 @@
 @requre
  */
 /*============================================*/
+const config = require('./config.js')
 const common = require('./lib/common.js')
 const path = require('path')
 const express = require("express")
 const bodyParser = require("body-parser")
 const app = express()
 const router = express.Router()
-const hostname = '127.0.0.1'
-const PORT = process.env.PORT || 3000
 
 /*============================================
 * config
@@ -21,7 +20,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({//form->post
     extended: false
 }))
-app.listen(PORT, () => {
+app.listen(config.port, () => {
     console.log('start SERVER')
     console.log(__dirname);
 })
@@ -43,5 +42,13 @@ app.post('/form_receiver', (req, res) => {
 })
 app.use('/router', require('./routers'))
 app.use('/login', require('./routers/login.js'))
+
+//DB
+const MongoClient = require('mongodb').MongoClient
+
+MongoClient.connect('link-to-mongodb',(err,database)=>{
+    console.log("---------")
+    console.log(database)
+})
 
 module.exports = app
