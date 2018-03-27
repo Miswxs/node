@@ -1,27 +1,37 @@
 const path = require('path')
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 /*============================================
 * webpack
 ============================================*/
 module.exports = {
     mode: 'development',
-    entry: ['./public/src/js/common.js', './public/src/js/core.js'],
+    // entry: ['./public/src/js/common.js', './public/src/js/core.js'],
+    entry: {
+        'bundle.min.css': [
+            path.resolve(__dirname, 'src/css/common.css'),
+            path.resolve(__dirname, 'src/css/layout.css')
+        ],
+        'bundle.js': [
+            path.resolve(__dirname, 'src/common.js')
+        ]
+    },
     output: {
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
+        filename: '[name]',
+        path: path.resolve(__dirname, 'public')
     },
-    devServer: {
-        hot: true,
-        inline: true,
-        host: '0.0.0.0',
-        port: '1000',
-        contentBase: path.join(__dirname, 'public')
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader'
+                })
+            },
+        ],
     },
-    module: {},
-    plugins: [],
-    optimization: {},
-    resolve: {
-        modules: ['node_modules'],
-        extensions: ['.js', '.json', '.jsx', '.css'],
-    },
-};
+    plugins: [
+        new ExtractTextPlugin("bundle.min.css")
+    ]
+}

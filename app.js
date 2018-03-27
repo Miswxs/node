@@ -22,12 +22,10 @@ app.use(bodyParser.urlencoded({//form->post
 }))
 app.listen(config.port, () => {
     console.log('start SERVER')
-    console.log(__dirname);
+    common.log(__dirname);
 })
 
-/*============================================
-* routers
-============================================*/
+/* Route 경로 설정 */
 let indexFile = __dirname + '/public/index.html'
 app.get('/template', (req, res) => {
     res.render('temp', {time: Date(), title: 'This is my title!!'})
